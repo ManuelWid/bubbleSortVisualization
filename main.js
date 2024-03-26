@@ -39,6 +39,7 @@ else{
 const number_array = randomArray(array_length,1,canvas.height);
 
 // these vars are soley used for drawing
+let drawing = true;
 let endpoint = number_array.length;
 let compare_a = 0;
 let compare_b = 1;
@@ -89,7 +90,10 @@ function draw(){
         ctx.fillRect(i*rectWidth, canvas.height, rectWidth, number_array[i]);
         ctx.restore();
     }
-    requestAnimationFrame(draw);
+
+    if(drawing){
+        requestAnimationFrame(draw);
+    }
 }
 
 async function bubbleSort(arr){
@@ -107,6 +111,7 @@ async function bubbleSort(arr){
         }
         endpoint = new_endpoint;
     }
+    drawing = false;
     console.log(number_array);
 }
 
